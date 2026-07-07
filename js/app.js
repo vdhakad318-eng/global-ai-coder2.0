@@ -184,3 +184,167 @@ function showToast(text) {
     }, 2000);
 
                          }
+
+/* ==========================================
+   Send Message
+========================================== */
+
+async function sendMessage() {
+
+    if (isGenerating) return;
+
+    const text = prompt.value.trim();
+
+    if (!text) return;
+
+    isGenerating = true;
+
+    addUserMessage(text);
+
+    prompt.value = "";
+
+    prompt.style.height = "auto";
+
+    showTyping();
+
+    try {
+
+        const reply = await askAI(text);
+
+        hideTyping();
+
+        addAIMessage(reply);
+
+        saveHistory();
+
+    }
+
+    catch (err) {
+
+        hideTyping();
+
+        addAIMessage(
+
+`❌ **Error**
+
+${err.message}`
+
+        );
+
+    }
+
+    finally {
+
+        isGenerating = false;
+
+    }
+
+}
+
+/* ==========================================
+   User Message
+========================================== */
+
+function addUserMessage(text){
+
+const div=document.createElement("div");
+
+div.className="message user";
+
+div.innerHTML=`
+
+<div class="avatar">
+
+🧑
+
+</div>
+
+<div class="bubble">
+
+${escapeHtml(text).replace(/\n/g,"<br>")}
+
+</div>
+
+`;
+
+messages.appendChild(div);
+
+scrollBottom();
+
+}
+
+/* ==========================================
+   AI Message
+========================================== */
+
+function addAIMessage(text){
+
+const div=document.createElement("div");
+
+div.className="message ai";
+
+let html=marked.parse(text);
+
+div.innerHTML=`
+
+<div class="avatar">
+
+🤖
+
+</div>
+
+<div class="bubble">
+
+${html}
+
+</div>
+
+`;
+
+messages.appendChild(div);
+
+highlightCode();
+
+scrollBottom();
+
+}
+
+/* ==========================================
+   Highlight.js
+========================================== */
+
+function highlightCode(){
+
+document
+.querySelectorAll("pre code")
+.forEach(block=>{
+
+hljs.highlightElement(block);
+
+});
+
+}
+
+/* ==========================================
+   Escape HTML
+========================================== */
+
+function escapeHtml(text){
+
+const map={
+
+"&":"&amp;",
+
+"<":"&lt;",
+
+">":"&gt;",
+
+'"':"&quot;",
+
+"'":"&#039;"
+
+};
+
+return text.replace(/[&<>"']/g,m=>map[m]);
+
+}
