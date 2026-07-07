@@ -1,54 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<meta
+name="theme-color"
+content="#0f172a">
+
+<meta
+name="description"
+content="Global AI Coder v2.0">
 
 <title>Global AI Coder v2.0</title>
 
-<meta name="description" content="Global AI Coder - Professional AI Coding Assistant">
-<meta name="theme-color" content="#0f172a">
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
 
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/sidebar.css">
-<link rel="stylesheet" href="css/chat.css">
+<link rel="stylesheet"
+href="css/style.css">
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github-dark.min.css">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+<script defer
+src="https://cdn.jsdelivr.net/npm/marked/marked.min.js">
+</script>
 
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script defer
+src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js">
+</script>
 
-<script defer src="js/app.js"></script>
-<script defer src="js/sidebar.js"></script>
+<script defer
+src="js/app.js">
+</script>
 
 </head>
 
 <body>
 
+<!-- Loading -->
+
 <div id="loadingScreen">
 
 <div class="loader"></div>
 
-<h2>Global AI Coder</h2>
+<h2>
 
-<p>Loading AI Engine...</p>
+Global AI Coder
+
+</h2>
+
+<p>
+
+Initializing AI Engine...
+
+</p>
 
 </div>
 
-<div class="app">
+<!-- App -->
 
-<!-- ================= Sidebar ================= -->
+<div id="app">
+
+<!-- Sidebar -->
 
 <aside id="sidebar">
 
-<div class="logoArea">
+<div class="sidebar-top">
 
 <div class="logo">
 
@@ -58,9 +88,17 @@ href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github-
 
 <div>
 
-<h2>Global AI</h2>
+<h2>
 
-<p>Coder v2.0</p>
+Global AI
+
+</h2>
+
+<p>
+
+Coder v2.0
+
+</p>
 
 </div>
 
@@ -72,39 +110,33 @@ href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github-
 
 </button>
 
-<div class="menuTitle">
+<div class="sidebar-title">
 
 Chats
 
 </div>
 
-<div id="chatHistory">
+<div id="historyList">
 
-<!-- Auto Generated -->
+<!-- JS -->
 
 </div>
 
-<div class="bottomMenu">
+<div class="sidebar-bottom">
 
-<button>
+<button id="savedBtn">
+
+📁 Saved
+
+</button>
+
+<button id="settingsBtn">
 
 ⚙ Settings
 
 </button>
 
-<button>
-
-📁 Saved Codes
-
-</button>
-
-<button>
-
-⭐ Favorites
-
-</button>
-
-<button>
+<button id="aboutBtn">
 
 ℹ About
 
@@ -114,11 +146,11 @@ Chats
 
 </aside>
 
-<!-- ================= Main ================= -->
+<!-- Main -->
 
 <main id="main">
 
-<header>
+<header id="topBar">
 
 <button id="menuBtn">
 
@@ -126,13 +158,13 @@ Chats
 
 </button>
 
-<div class="headerTitle">
+<h1>
 
 Global AI Coder
 
-</div>
+</h1>
 
-<div class="modelBadge">
+<div class="modelName">
 
 Groq AI
 
@@ -140,11 +172,13 @@ Groq AI
 
 </header>
 
+<!-- Chat -->
+
 <section id="messages">
 
 <div class="message ai">
 
-<div class="avatar aiAvatar">
+<div class="avatar">
 
 🤖
 
@@ -152,17 +186,21 @@ Groq AI
 
 <div class="bubble">
 
-<h2>Welcome 👋</h2>
+<h2>
+
+Welcome 👋
+
+</h2>
 
 <p>
 
-I'm <b>Global AI Coder v2.0</b>.
+I'm <b>Global AI Coder v2.0</b>
 
 </p>
 
 <p>
 
-I can build complete apps, websites, Android projects and professional source code.
+I can help you with
 
 </p>
 
@@ -190,174 +228,9 @@ I can build complete apps, websites, Android projects and professional source co
 
 <p>
 
-Start by asking me anything...
+Ask me anything...
 
 </p>
-
-</div>
-
-</div>
-
-  <!-- Welcome Message End -->
-
-</section>
-
-<!-- Typing Indicator -->
-
-<div id="typingIndicator" class="typing hidden">
-
-<div class="typing-avatar">
-
-🤖
-
-</div>
-
-<div class="typing-bubble">
-
-<span></span>
-
-<span></span>
-
-<span></span>
-
-</div>
-
-</div>
-
-<!-- Input Area -->
-
-<footer id="chatFooter">
-
-<div class="inputContainer">
-
-<button
-id="attachBtn"
-class="toolBtn"
-title="Upload File">
-
-📎
-
-</button>
-
-<textarea
-id="prompt"
-placeholder="Ask Global AI Coder anything..."
-rows="1"></textarea>
-
-<button
-id="voiceBtn"
-class="toolBtn"
-title="Voice Input">
-
-🎤
-
-</button>
-
-<button
-id="sendBtn">
-
-Send ➜
-
-</button>
-
-</div>
-
-<div class="footerInfo">
-
-<span>
-
-Powered by Groq AI
-
-</span>
-
-<span>
-
-Global AI Coder v2.0
-
-</span>
-
-</div>
-
-</footer>
-
-</main>
-
-</div>
-
-<!-- Mobile Sidebar Overlay -->
-
-<div
-id="overlay"
-class="hidden">
-
-</div>
-
-<!-- Settings Modal -->
-
-<div
-id="settingsModal"
-class="modal hidden">
-
-<div class="modal-content">
-
-<h2>
-
-⚙ Settings
-
-</h2>
-
-<div class="settingItem">
-
-<label>
-
-Theme
-
-</label>
-
-<select id="themeSelect">
-
-<option value="dark">
-
-Dark
-
-</option>
-
-<option value="light">
-
-Light
-
-</option>
-
-</select>
-
-</div>
-
-<div class="settingItem">
-
-<label>
-
-AI Model
-
-</label>
-
-<select id="modelSelect">
-
-<option>
-
-Groq
-
-</option>
-
-</select>
-
-</div>
-
-<button
-id="closeSettings">
-
-Close
-
-</button>
 
 </div>
 
